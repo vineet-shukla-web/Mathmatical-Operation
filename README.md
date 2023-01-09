@@ -5,6 +5,8 @@
 
  * We will pass two parameter and its display result.
 
+ * For test this package use index.php file to test it.
+
         1.add()
 
         2.subtract()
