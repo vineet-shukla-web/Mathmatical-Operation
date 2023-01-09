@@ -19,6 +19,9 @@ Step 3: Use this way to access this package class
     $class = new \Vineet\MathmaticalOperation\Calculation()
 
 
-Step 4: To access this methode (add,subtract,multiply,division) like 
+Step 4: To access this method (add,subtract,multiply,division) like 
 
     $result=$class->add($val1,$val2);
+
+
+Step 5: Craete your own file where test your package.
