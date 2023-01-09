@@ -7,7 +7,7 @@
 
  * We define all these function inside Calculation class.
 
- * All these operation you can get using this Calculation class.
+ * We can access this function using Calculation class.
 
         1.add()
 
