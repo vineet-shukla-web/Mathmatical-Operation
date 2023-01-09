@@ -1,21 +1,16 @@
 # Mathmatical-Operation
 
-* This package perform mathmatical opertion like
-  add,subtract,multiply,division.
+Installation
 
- * We will pass two parameter and its display result.
+Step 1: Create the package.json file to your root directory and define
+ {
+    "minimum-stability": "dev"
 
- * We define all these function inside Calculation class.
+ }
 
- * We can access this function using Calculation class.
+Step 2: Composer
+Via Composer command line:
 
-        1.add()
+$ composer require vineet/mathmatical-operation
 
-        2.subtract()
-
-        3.mutliply()
-
-        4.division()
-
- 
 
