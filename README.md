@@ -1,6 +1,6 @@
 # Mathmatical-Operation
 
-* This function perform mathmatical opertion like
+* This package perform mathmatical opertion like
   add,subtract,multiply,division.
 
  * We will pass two parameter and its display result.
