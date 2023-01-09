@@ -5,7 +5,9 @@
 
  * We will pass two parameter and its display result.
 
- * For test this package use index.php file to test it.
+ * We define all these function inside Calculation class.
+
+ * All these operation you can get using this Calculation class.
 
         1.add()
 
