@@ -1,7 +1,9 @@
 # Mathmatical-Operation
 
 * This function perform mathmatical opertion like
-  add,subtract,multiply,division
+  add,subtract,multiply,division.
+
+ * We will pass two parameter and its display result.
 
   1.add()
 
@@ -10,4 +12,6 @@
   3.mutliply()
 
   4.division()
+
+ 
 
