@@ -2,7 +2,7 @@
 
 Installation
 
-Step 1: Create the package.json file to your root directory and define
+Step 1: Create the composer.json file to your root directory and define
 
     {
         "minimum-stability": "dev"
