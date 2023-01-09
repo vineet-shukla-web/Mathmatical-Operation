@@ -5,13 +5,13 @@
 
  * We will pass two parameter and its display result.
 
-  1.add()
+        1.add()
 
-  2.subtract()
+        2.subtract()
 
-  3.mutliply()
+        3.mutliply()
 
-  4.division()
+        4.division()
 
  
 
