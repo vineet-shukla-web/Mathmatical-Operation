@@ -1,0 +1,11 @@
+{
+    "name": "vineet/mathmatical-operation",
+    "description": "vineet/mathmatical-operation",
+    "autoload": {
+        "psr-4": {
+            "Vineet\\MathmaticalOperation\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
