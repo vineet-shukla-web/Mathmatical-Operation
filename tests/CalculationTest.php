@@ -1,6 +1,6 @@
 
 
-<?php //declare(strict_types=1);
+<?php 
 use PHPUnit\Framework\TestCase;
  class CalculationTest extends TestCase
 {
@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
         $calculation = new \Vineet\MathmaticalOperation\Calculation();
         $result=$calculation->add(10,20);
         $this->assertEquals(50,$result);
-        //.\vendor\bin\phpunit tests
+        //.\vendor\bin\phpunit tests   //command to execute test case 
     }
 }
 
