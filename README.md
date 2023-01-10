@@ -48,6 +48,6 @@ Step 4: Function define like this
         return $a/$b;
     }
 
-    Check your TestCases use below command
+Step 5: Check your TestCases use below command
 
-        *  .\vendor\bin\phpunit tests   
+    *  .\vendor\bin\phpunit tests   
