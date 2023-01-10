@@ -47,3 +47,7 @@ Step 4: Function define like this
     function division($a,$b){
         return $a/$b;
     }
+
+    Check your TestCases use below command
+
+        *  .\vendor\bin\phpunit tests   
