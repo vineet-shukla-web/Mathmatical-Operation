@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace Vineet\MathmaticalOperation;
 class Calculation {
     function __construct(){        
@@ -8,10 +7,10 @@ class Calculation {
         return $a+$b;
     }
     function subtract($a,$b){
-        return $a+$b;
+        return $a-$b;
     }
     function multiply($a,$b){
-        return $a+$b;
+        return $a*$b;
     }
 
     function division($a,$b){
