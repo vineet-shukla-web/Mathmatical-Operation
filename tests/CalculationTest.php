@@ -9,23 +9,23 @@ class CalculationTest extends TestCase
     public function testAdd()
     {
         $calculation = new \Vineet\MathmaticalOperation\Calculation();
-        $result = $calculation->add(10, 20);
-        $this->assertEquals(20, $result);
+        $result = $calculation->add(5, 20);
+        $this->assertEquals(5, $result,"Actual value is not equals to expected");
     }
 
     //*=========For subtarct function ===================*//
     public function testSubtract()
     {
         $calculation = new \Vineet\MathmaticalOperation\Calculation();
-        $result = $calculation->subtract(20, 10);
-        $this->assertEquals(10, $result);
+        $result = $calculation->subtract(20, 10,);
+        $this->assertEquals(10, $result,"Actual value is not equals to expected");
     }
     //*=========For multiply function ===================*//
     public function testMultiply()
     {
         $calculation = new \Vineet\MathmaticalOperation\Calculation();
         $result = $calculation->multiply(20, 10);
-        $this->assertEquals(200, $result);
+        $this->assertEquals(200, $result,"Actual value is not equals to expected");
     }
 
     //*=========For division function ===================*//
@@ -33,6 +33,6 @@ class CalculationTest extends TestCase
     {
         $calculation = new \Vineet\MathmaticalOperation\Calculation();
         $result = $calculation->division(20, 10);
-        $this->assertEquals(2, $result);
+        $this->assertEquals(2, $result,"Actual value is not equals to expected");
     }
 }

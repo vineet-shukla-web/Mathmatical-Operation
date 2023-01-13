@@ -1,7 +1,4 @@
 <?php
 require_once 'vendor/autoload.php';
-$class = new \Vineet\MathmaticalOperation\Calculation();
-$result=$class->add(10,20);
-echo $result;
-
-
+$response = new \Vineet\MathmaticalOperation\ConnectAPI('token');
+echo $response->getAllOrdersOfDay(123);
