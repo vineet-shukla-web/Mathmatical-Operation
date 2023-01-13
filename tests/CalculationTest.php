@@ -2,6 +2,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use Vineet\MathmaticalOperation;
+
 class CalculationTest extends TestCase
 {
 
@@ -35,4 +36,14 @@ class CalculationTest extends TestCase
         $result = $calculation->division(20, 10);
         $this->assertEquals(2, $result,"Actual value is not equals to expected");
     }
+
+
+    // *=============Check all order of the day=============*//
+    public function testAllOrdersOfDay(){
+        $response = new \Vineet\MathmaticalOperation\ConnectAPI('token');
+        $result= $response->getAllOrdersOfDay(123);
+        $this->assertEquals(2, $result,"Actual value is not equals to expected");
+    }
+    
+
 }

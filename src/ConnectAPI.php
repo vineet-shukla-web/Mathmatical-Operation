@@ -3,7 +3,7 @@ namespace Vineet\MathmaticalOperation;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-
+use GuzzleHttp\Psr7\Request;
 use Vineet\MathmaticalOperation\Exception\DataException;
 use Vineet\MathmaticalOperation\Exception\GeneralException;
 use Vineet\MathmaticalOperation\Exception\InputException;
@@ -155,9 +155,6 @@ class ConnectAPI
     //guzzle client
     private function guzzle(string $url, string $method, ?array $headers, $params = null, $guzzleClient = null): array
     {
-        // set header to Guzzle http client
-        // mock patching isn't allowed in PHP
-        // Need to pass guzzle client as dependency to mock http response for unit tests
         if ($guzzleClient) {
             $client = $guzzleClient;
         } else {
@@ -196,11 +193,12 @@ class ConnectAPI
         return ["headers" => $response_headers, "body" => $result];
     }
 
+
+    //Get All orders of day
     public function getAllOrdersOfDay(string $customerId): array
     {
         return $this->formatResponseArray($this->get("services.reports",["customerId" => $customerId]));
     }
-
 
     private function formatResponseArray($data): array
     {
