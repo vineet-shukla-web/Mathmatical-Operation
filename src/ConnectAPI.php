@@ -5,32 +5,21 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use Vineet\MathmaticalOperation\Exception\DataException;
-use Vineet\MathmaticalOperation\Exception\GeneralException;
-use Vineet\MathmaticalOperation\Exception\InputException;
-use Vineet\MathmaticalOperation\Exception\NetworkException;
-use Vineet\MathmaticalOperation\Exception\OrderException;
-use Vineet\MathmaticalOperation\Exception\PermissionException;
-use Vineet\MathmaticalOperation\Exception\TokenException;
+
 class ConnectAPI
 {
 
-    # Position Type
-    public const POSITION_TYPE_DAY = "day";
-    public const POSITION_TYPE_OVERNIGHT = "overnight";
-
     private $baseUrl = "https://api.sharekhan.com/skapi";
-
     /** @var String */
     private $loginUrl = "https://kite.trade/connect/login";
-
 
     public const VERSION = "3.2.0";
     // API route map.
     /** @var array */
     private $routes = [
-        "services.reports"=>"/services/reports/{customerId}"
+        "services.reports" => "/services/reports/{customerId}",
     ];
-      // Instance variables
+    // Instance variables
     /** @var int */
     private $timeout;
 
@@ -55,33 +44,38 @@ class ConnectAPI
         $this->debug = $debug;
         $this->sessionHook = null;
         $this->timeout = $timeout;
-        $this->guzzleClient = $guzzleClient; 
+        $this->guzzleClient = $guzzleClient;
 
         if ($root) {
             $this->baseUrl = $root;
         }
     }
-    public function getApi()
+    public function testApi()
     {
-       $url="https://api.sharekhan.com/skapi/services";
-       $client = new \GuzzleHttp\Client();
-       try{
-        $res = $client->request('GET', $url);
-       }catch(Exception $e){
-        die();
-          throw $e;
-       }
-       echo $res;
-    
+        $url = "https://api.sharekhan.com/skapi/services";
+        $client = new \GuzzleHttp\Client();
+        try {
+            $res = $client->request('GET', $url);
+        } catch (Exception $e) {
+            die();
+            throw $e;
+        }
+        echo $res;
+
+    }
+    //===============Get All orders of day==========//
+    public function getAllOrdersOfDay(string $customerId): array
+    {
+        return $this->formatResponseArray($this->get("services.reports", ["customerId" => $customerId]));
     }
 
-    //Get Request
+    //==============Get Request=================//
     private function get(string $route, array $params = [], string $headerContent = '')
     {
         return $this->request($route, "GET", $params, $headerContent);
     }
 
-    // request URL
+    //==============Request URL=================//
     private function request(string $route, string $method, array $params, string $headerContent)
     {
         $uri = $this->routes[$route];
@@ -107,8 +101,8 @@ class ConnectAPI
         // Prepare the request header
         $request_headers = [
             "Content-Type" => $content_type,
-            "User-Agent" => "phpkiteconnect/" . self::VERSION,
-            "X-Kite-Version" => 3,
+            //"User-Agent" => "phpkiteconnect/" . self::VERSION,
+            //"X-Kite-Version" => 3,
         ];
 
         if ($this->apiKey && $this->accessToken) {
@@ -141,8 +135,9 @@ class ConnectAPI
                 }
                 $this->throwSuitableException($headers, $json);
             }
-            if($json->status!=200){
+            if ($json->status != 200) {
                 $this->throwSuitableException($headers, $json);
+                return;
             }
             return $json->data;
         } elseif (strpos($headers["Content-Type"][0], "text/csv") !== false) {
@@ -152,7 +147,7 @@ class ConnectAPI
         }
     }
 
-    //guzzle client
+    //===============guzzle client=============//
     private function guzzle(string $url, string $method, ?array $headers, $params = null, $guzzleClient = null): array
     {
         if ($guzzleClient) {
@@ -176,13 +171,12 @@ class ConnectAPI
             $body_array = ['query' => $payload];
         }
         try {
-            $response = $client->request($method, $url,$body_array);
+            $response = $client->request($method, $url, $body_array);
         } catch (RequestException $e) {
             // fetch all error response field
             $response = $e->getResponse();
         }
-         try {
-
+        try {
             $result = $response->getBody()->getContents();
             $response_headers = $response->getHeaders();
         } catch (RequestException $e) {
@@ -192,14 +186,7 @@ class ConnectAPI
         $response_headers['status_code'] = $response->getStatusCode();
         return ["headers" => $response_headers, "body" => $result];
     }
-
-
-    //Get All orders of day
-    public function getAllOrdersOfDay(string $customerId): array
-    {
-        return $this->formatResponseArray($this->get("services.reports",["customerId" => $customerId]));
-    }
-
+    //=====Get result in array format=============//
     private function formatResponseArray($data): array
     {
         $results = [];
@@ -208,9 +195,10 @@ class ConnectAPI
         }
         return $data;
     }
+    //===== ==Display Exception =============//
     private function throwSuitableException(array $headers, $json)
     {
         echo json_encode($json);
-        die;
+        exit;
     }
 }
